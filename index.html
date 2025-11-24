@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* GAMBAR HEADER */
+        .header-img {
+            width: 300px;
+            height: 250px;
+            object-fit: cover;
+            animation: fadeInImage 1.2s ease;
+        }
+
+        @keyframes fadeInImage {
+            from { opacity: 0; transform: scale(0.85); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        @font-face {
+            * { font-family: 'abc' !important; }
+            src: url('fonts/abc.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'ff';
+            src: url('fonts/ff.ttf') format('truetype');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+
+            background-image: url('bck.jfif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* CONTAINER FULL CENTER */
+        .container {
+            max-width: 520px;
+            width: 100%;
+            padding: 0 40px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        h1 {
+            font-family: 'abc';
+            font-size: 30px;
+            margin: 0;
+        }
+
+        h2 {
+            font-family: 'ff';
+            font-size: 20px;
+            margin: 0;
+        }
+
+        h1, h2 {
+            color: rgb(19, 32, 87);
+            text-shadow:
+                -1px -1px 1px rgb(255, 255, 255),
+                 1px -1px 1px rgb(255, 255, 255),
+                -1px  1px 1px rgb(255, 255, 255),
+                 1px  1px 2px rgb(255, 255, 255);
+        }
+
+        .btn {
+            margin-top: 18px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            background: #5e9cc5;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #00a2ff;
+        }
+
+        /* ANIMASI MASUK */
+        .fade-in-page {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: fadeInPage 1s ease-out forwards;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(25px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ANIMASI KELUAR */
+        .fade-out {
+            animation: pageOut 0.9s forwards ease;
+        }
+
+        @keyframes pageOut {
+            0%   { opacity: 1; filter: blur(0);   transform: scale(1); }
+            100% { opacity: 0; filter: blur(5px); transform: scale(1.05); }
+        }
+/* FRAME BOX DIPERBAIKI */
+.frame-box {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -40px;        /* dinaikkan ke atas */
+    margin-bottom: 40px;      /* beri jarak dari teks */
+}
+
+/* BINGKAI */
+.bingkai {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    z-index: 1;
+    animation: fadeInImage 1.2s ease;
+}
+
+/* FOTO BULAT */
+.foto {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 80px;                /* naik-turunkan foto di dalam bingkai */
+    left: 48%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    z-index: 3;
+}
+/* --- ANIMASI MENGELILINGI HALAMAN --- */
+.effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Cahaya mengorbit */
+.orbit {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0, 68, 255, 0.9);
+    box-shadow: 0 0 15px rgb(0, 159, 199);
+}
+
+/* Orbit 1 */
+.orbit1 {
+    top: 10%;
+    left: 10%;
+    animation: orbitMove 40s linear infinite;
+}
+
+/* Orbit 2 */
+.orbit2 {
+    top: 50%;
+    left: 85%;
+    animation: orbitMove 40s linear infinite reverse;
+}
+
+/* Orbit 3 */
+.orbit3 {
+    top: 80%;
+    left: 20%;
+    animation: orbitMove 40s linear infinite;
+}
+
+/* Keyframes ORBIT bergerak memutar */
+@keyframes orbitMove {
+    0%   { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    50%  { transform: rotate(180deg) translateX(40px) rotate(-180deg); }
+    100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+/* --- Sparkle / Kelap-kelip --- */
+.sparkle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 17, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 132, 255, 0.8);
+    opacity: 0;
+    animation: sparkleBlink 2.5s infinite ease-in-out;
+}
+
+/* Posisi sparkle */
+.sparkle1 { top: 15%; left: 80%; animation-delay: 0.2s; }
+.sparkle2 { top: 70%; left: 15%; animation-delay: 1s; }
+.sparkle3 { top: 40%; left: 50%; animation-delay: 1.7s; }
+.sparkle4 { top: 40%; left: 50%; animation-delay: 1.7s; }
+
+/* Blink animation */
+@keyframes sparkleBlink {
+    0%   { opacity: 0; transform: scale(0.2); }
+    50%  { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.2); }
+}
+
+    </style>
+</head>
+
+<body class="fade-in-page">
+
+    <div class="container">
+        <div class="frame-box">
+    <meta property="og:image" content="ddd.jfif">
+    <img src="bingkai.png" class="bingkai">
+</div>
+
+        <h1>WALIMATUL KHITAN</h1>
+        <h2>"T. DEWA ABQORI"</h2>
+        <h2>Kepada Yth.</h2>
+        <h2 id="nama-tamu">Tamu Undangan</h2>
+
+        <a href="isi.html">
+            <button class="btn">Buka Undangan</button>
+        </a>
+    </div>
+<div class="effects">
+    <div class="orbit orbit1"></div>
+    <div class="orbit orbit2"></div>
+    <div class="orbit orbit3"></div>
+    <div class="sparkle sparkle1"></div>
+    <div class="sparkle sparkle2"></div>
+    <div class="sparkle sparkle3"></div>
+</div>
+<!-- OPEN GRAPH WHATSAPP PREVIEW -->
+<meta property="og:title" content="Walimatus Khitan - T. Dewa Abqori">
+<meta property="og:description" content="Undangan Walimatul Khitan T. Dewa Abqori">
+<meta property="og:image" content="ddd.jfif">  <!-- Ganti sesuai gambar yang tampil di halaman -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://link-website-kamu.com">
+
+    <script>
+        document.querySelector(".btn").addEventListener("click", function(e) {
+            e.preventDefault();
+            document.body.classList.add("fade-out");
+            setTimeout(() => { window.location.href = "isi.html"; }, 800);
+        });
+    </script>
+<script>
+    // Ambil parameter "nama" di URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const nama = urlParams.get("nama");
+
+    // Jika ada nama → tampilkan, jika kosong tetap "Tamu Undangan"
+    if (nama) {
+        document.getElementById("nama-tamu").textContent = decodeURIComponent(nama);
+    }
+</script>
+
+</body>
+</html>

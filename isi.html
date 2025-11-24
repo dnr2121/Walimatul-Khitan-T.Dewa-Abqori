@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Layout</title>
+
+    <style>
+/* ================================
+   ORNAMEN / DEKORASI
+================================ */
+.ornamen {
+    position: fixed;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0.35;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.ornamen.rotasi {
+    animation: float 6s ease-in-out infinite alternate,
+               rot 12s linear infinite;
+}
+
+@keyframes float { from { transform: translateY(0); } to { transform: translateY(22px); } }
+@keyframes rot { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* =============================
+   BACKGROUND UTAMA
+============================= */
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, #2EA6FF 10%, transparent 11%) repeat;
+    background-size: 20px 20px;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* =============================
+   KONTAINER UTAMA
+============================= */
+.container {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    padding-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.box-top {
+    height: 180px;
+    background-image: url('ddd.jfif');
+    background-size: cover;
+    background-position: 85% center;
+    border-radius: 25px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.box-top::before {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.55), transparent);
+    border-radius: inherit;
+    z-index: 1;
+}
+
+/* =============================
+   TEXT OVERLAY ATAS
+============================= */
+.text-overlay {
+    position: relative;
+    z-index: 2;
+    margin-left: 20px;
+    color: white;
+    text-shadow: 2px 2px 3px #000;
+}
+
+.text-overlay h1 {
+    margin: 0;
+    font-size: 26px;
+    font-family: Cambria, serif;
+}
+
+.text-overlay p {
+    margin-top: 3px;
+    font-size: 17px;
+    font-family: Cambria, serif;
+}
+
+/* =============================
+   BOX KEDUA (TENGAH)
+============================= */
+.box-bottom {
+    background: #55a7c7;
+    border-radius: 25px;
+    margin-top: 20px;
+    padding: 35px 0 20px;
+}
+
+.bismillah {
+    text-align: center;
+    width: 100%;
+    font-size: 28px;
+    font-family: "Traditional Arabic", serif;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.salam {
+    margin: 40px auto 0;
+    text-align: center;
+    font-size: 18px;
+    font-family: Georgia, serif;
+    color: white;
+}
+
+/* =============================
+   FOTO BULAT + BORDER
+============================= */
+.image-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.image-box img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: bottom;
+    border-radius: 50%;
+    border: 12px solid #0e6aa7;
+    box-shadow: 0 0 10px rgba(0,0,0,0.35);
+}
+
+.nama-anak {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+    font-weight: bold;
+    font-family: Georgia, serif;
+}
+
+/* =============================
+   BOX JADWAL
+============================= */
+.box-third {
+    background: #55a7c7;
+    width: 85%;
+    margin: 35px auto 20px;
+    padding: 20px;
+    border-radius: 25px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.box-jadwal {
+    background: #0e6aa7;
+    padding: 12px 18px;
+    border-radius: 15px;
+    margin: 12px auto;
+    width: 50%;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+.box-jadwal2 {
+    background: #0e6aa7;
+    padding: 12px 18px;
+    border-radius: 15px;
+    margin: 12px auto;
+    width: 40%;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+/* =============================
+   MAP BUTTON
+============================= */
+.btn-lokasi {
+    margin: 25px auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 8px rgba(0,0,0,0.25);
+    transition: 0.3s;
+}
+
+.btn-lokasi:hover {
+    background: #006aa3;
+    color: white;
+}
+
+.icon-maps {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 5px;
+}
+
+.btn-lokasi span {
+    font-size: 11px;
+    font-weight: bold;
+    
+}
+.lokasi {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    margin-top: 10px;
+}
+.nama-jalan {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    margin-top: 10px;
+}
+/* =============================
+   TEKS AYAT & PENUTUP
+============================= */
+.teks {
+    text-align: center;
+    color: white;
+    font-size: 17px;
+    margin-top: 10px;
+}
+.teks2 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.pembatas {
+    width: 60%;
+    height: 2px;
+    background: white;
+    margin: 22px auto;
+    border-radius: 5px;
+}
+
+.ucapan-terimakasih {
+    margin-top: 30px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 19px;
+    font-family: Georgia, serif;
+}
+
+/* =============================
+   SCROLL ANIMATION
+============================= */
+.reveal, .reveal-box, .reveal-text {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all .9s ease;
+}
+
+.reveal.active,
+.reveal-box.active,
+.reveal-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =============================
+   RESPONSIVE HP KECIL
+============================= */
+@media (max-width: 400px) {
+    .image-box img { width: 170px; height: 170px; }
+    .text-overlay h1 { font-size: 23px; }
+    .text-overlay p { font-size: 15px; }
+    .nama-anak { font-size: 22px; }
+}
+.kami {
+     background: #0e6aa7;
+    padding: 12px 18px;
+    border-radius: 15px;
+    margin: 12px auto;
+    width: 50%;
+    margin: 40px auto 0;
+    text-align: center;
+    font-size: 18px;
+    font-family: Georgia, serif;
+    color: rgb(255, 255, 255);
+}
+/* =============================
+   FORM KONFIRMASI & UCAPAN
+============================= */
+.form-section {
+    background: #55a7c7;
+    width: 85%;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 25px;
+    color: white;
+    font-family: Georgia, serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.judul-form {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.form-section label {
+    font-size: 16px;
+    margin-top: 10px;
+    display: block;
+}
+
+.form-section input,
+.form-section textarea,
+.form-section select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 12px;
+    border: none;
+    font-size: 15px;
+}
+
+.form-section textarea {
+    height: 85px;
+    resize: none;
+}
+
+.btn-kirim {
+    margin-top: 18px;
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: #0e6aa7;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    font-size: 16px;
+}
+
+.btn-kirim:hover {
+    background: #0e6aa7;
+    color: white;
+}
+/* =============================
+   DAFTAR UCAPAN
+============================= */
+.ucapan-list {
+    background: #ffffff;
+    width: 85%;
+    margin: 25px auto 40px;
+    padding: 20px;
+    border-radius: 25px;
+    color: #000;
+    font-family: Georgia, serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+.judul-ucapan {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.ucapan-item {
+    background: #55a7c7;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.ucapan-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ucapan-item p {
+    margin: 5px 0 0;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+    </style>
+</head>
+
+<body class="fade-in-page">
+<!-- MUSIK LATAR -->
+<audio id="musik" src="lagu.mp3" loop></audio>
+<!-- TOMBOL MUSIK -->
+<div id="musikBtn" onclick="toggleMusic()">
+    🔊
+</div>
+
+<style>
+#musikBtn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background: #0e6aa7;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 999;
+    transition: .3s;
+}
+
+#musikBtn.paused {
+    background: #444;
+}
+</style>
+
+<div class="container">
+
+    <!-- BOX TOP -->
+    <div class="box box-top reveal-box">
+        <div class="text-overlay">
+            <h1>Walimatul Khitan</h1>
+            <p>Putra dari keluarga<br>Bapak Dolof &<br>Ibu Sofi.</p>
+        </div>
+    </div>
+
+    <!-- BOX BOTTOM -->
+    <div class="box box-bottom">
+
+        <div class="bismillah reveal-text">
+            بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+        </div>
+
+        <div class="salam reveal-text">
+            Assalamualaikum Wr.Wb<br>
+            Dengan memohon rahmat & ridho Allah SWT,<br>
+            kami bermaksud menyelenggarakan<br>
+            acara Tasyakuran Khitan putra kami.
+        </div>
+
+        <div class="image-box">
+            <img src="family.jfif" alt="Foto Acara">
+        </div>
+
+        <h2 class="nama-anak reveal-text">T. DEWA ABQORI</h2>
+
+        <!-- BOX JADWAL -->
+        <div class="box-third reveal-box">
+            Yang insyallah akan dilaksanakan:
+            <div class="box-jadwal">Hari / Tanggal:<br>Minggu, 21 Desember 2025</div>
+            <div class="box-jadwal2">Pukul:<br>10.00 s/d 17.00 WIB</div>
+            <div class="lokasi">
+            <h4>Lokasi Acara:</h4>
+            </div>
+            <a href="https://maps.app.goo.gl/NYTsZPHvDanhhFaAA" target="_blank" class="btn-lokasi">
+                <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" class="icon-maps">
+                <span>Lihat Maps</span>
+            </a>
+
+            <div class="nama-jalan">
+                (Jl. Selat Malaka 6, RT.011, Panjang Sel.,<br>
+                Kecamatan Panjang,<br>
+                Kota Bandar Lampung, Lampung)
+            </div>
+
+            <div class="pembatas"></div>
+
+            <div class="teks reveal-text">
+                "Di sanalah Zakariya berdoa<br>kepada Tuhannya:<br> Ya Tuhanku,<br>
+                berilah aku dari sisi Engkau<br>seorang anak yang baik.<br>
+                Sesungguhnya Engkau<br>Maha Pendengar doa."
+            </div>
+
+            <div class="teks2">(QS. Ali 'Imran: 38)</div>
+
+            <div class="pembatas"></div>
+        </div>
+        <div class="ucapan-terimakasih">
+            Merupakan suatu kehormatan bagi kami<br>
+                apabila Bapak/Ibu/Saudara/i berkenan<br>hadir
+                dalam acara kami.<br><br>
+                Wassalamu’alaikum Wr. Wb.
+        </div>
+        <div class="kami">
+            Kami yang berbahgia<br>
+            Keluarga Besar:<br>
+            Bapak Dolof & Ibu Sofi
+        </div>
+    </div>
+
+</div>
+
+<script>
+function revealElements() {
+    const reveals = document.querySelectorAll(".reveal, .reveal-box, .reveal-text");
+    reveals.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 130) {
+            el.classList.add("active");
+        }
+    });
+}
+window.addEventListener("scroll", revealElements);
+window.addEventListener("load", revealElements);
+</script>
+<!-- HALAMAN UCAPAN & KONFIRMASI -->
+<div class="form-section reveal-box">
+    <h2 class="judul-form">Konfirmasi Kehadiran & Ucapan</h2>
+
+    <label>Nama Tamu:</label>
+    <input type="text" id="namaTamu" placeholder="Masukkan nama Anda">
+
+    <label>Ucapan / Doa:</label>
+    <textarea id="ucapanTamu" placeholder="Tulis ucapan atau doa terbaik..."></textarea>
+
+    <label>Kehadiran:</label>
+    <select id="statusHadir">
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+    </select>
+
+    <button class="btn-kirim" onclick="kirimUcapan()">Kirim ke WhatsApp</button>
+</div>
+<div class="ucapan-list reveal-box" id="ucapanList">
+    <h2 class="judul-ucapan">Ucapan & Doa dari Tamu</h2>
+</div>
+
+<script>
+function kirimUcapan() {
+    let nama = document.getElementById("namaTamu").value;
+    let ucapan = document.getElementById("ucapanTamu").value;
+    let hadir = document.getElementById("statusHadir").value;
+
+    if (nama === "") {
+        alert("Nama tidak boleh kosong!");
+        return;
+    }
+
+    let pesan = 
+        "Konfirmasi Kehadiran:%0A" +
+        "Nama: " + nama + "%0A" +
+        "Status: " + hadir + "%0A%0A" +
+        "Ucapan/Doa:%0A" + ucapan;
+
+    let nomorWA = "6285766751326"; 
+
+    let url = "https://wa.me/" + nomorWA + "?text=" + pesan;
+
+    window.open(url, "_blank");
+}
+</script>
+<script>
+
+function kirimUcapan() {
+    let nama = document.getElementById("namaTamu").value;
+    let ucapan = document.getElementById("ucapanTamu").value;
+    let hadir = document.getElementById("statusHadir").value;
+
+    if (nama === "") {
+        alert("Nama tidak boleh kosong!");
+        return;
+    }
+}
+function tampilkanUcapan() {
+    let data = JSON.parse(localStorage.getItem("ucapanTamu")) || [];
+    let container = document.getElementById("ucapanList");
+
+    container.innerHTML = `<h2 class="judul-ucapan">Ucapan & Doa dari Tamu</h2>`;
+
+    data.forEach(item => {
+        let el = document.createElement("div");
+        el.className = "ucapan-item";
+        el.innerHTML = `
+            <h3>${item.nama} (${item.hadir})</h3>
+            <p>${item.ucapan}</p>
+        `;
+        container.appendChild(el);
+    });
+}
+
+window.onload = tampilkanUcapan;
+</script>
+<script>
+let musik = document.getElementById("musik");
+let btn = document.getElementById("musikBtn");
+
+document.body.addEventListener("click", () => {
+    musik.play().catch(() => {});
+}, { once: true });
+
+function toggleMusic() {
+    if (musik.paused) {
+        musik.play();
+        btn.classList.remove("paused");
+        btn.innerHTML = "🔊";
+    } else {
+        musik.pause();
+        btn.classList.add("paused");
+        btn.innerHTML = "🔇";
+    }
+}
+</script>
+
+</body>
+</html>
