@@ -263,7 +263,7 @@ body {
 }
 
 .countdown-item {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.25);
   padding: 12px 14px;
   border-radius: 15px;
   min-width: 70px;
@@ -306,6 +306,10 @@ body {
   .countdown-sep {
     font-size: 20px;
   }
+}
+#countdown {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 .pembatas {
@@ -708,7 +712,8 @@ function toggleMusic() {
 <script>
 (function() {
   // Target: 21 Desember 2025, 10:00 WIB (UTC+7)
-  const target = new Date('2025-12-21T10:00:00+07:00').getTime();
+  const target = new Date(2025, 11, 21, 10, 0, 0).getTime();
+// bulan 11 = Desember (bulan di JS mulai dari 0)
 
   const elDays = document.getElementById('cd-days');
   const elHours = document.getElementById('cd-hours');
